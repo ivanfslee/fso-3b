@@ -12,7 +12,6 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState(null)  
 
   const toggleImportanceOf = (id) => {
-    const url = `http://localhost:3001/api/notes/${id}`
     const note = notes.find(n => n.id === id)
     const changedNote = { ...note, important: !note.important }
 
@@ -33,7 +32,8 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/api/notes')
+      // .get('http://localhost:3001/api/notes')
+      .get('/api/notes')
     noteService
       .getAll()
       .then(initialNotes => {
